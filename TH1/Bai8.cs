@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace baiTH18
+namespace BTH1
 {
     public partial class Bai8 : Form
     {
@@ -17,39 +17,40 @@ namespace baiTH18
             InitializeComponent();
         }
 
-        private void btnthoat_Click(object sender, EventArgs e)
+        private void Bai8_Load(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Bạn có muốn thoát không ?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result == DialogResult.Yes)
-            {
-                Close();
-            }
+
         }
 
         private void txtgiai_Click(object sender, EventArgs e)
         {
-            int value;
-            if (string.IsNullOrEmpty(txtinta.Text) || !int.TryParse(txtinta.Text, out value) || value <= 0)
+            int a, b;
+            if (!int.TryParse(txtinta.Text, out a) || a <= 0)
             {
-                errorProvider1.SetError(txtinta, "Vui lòng nhập một số nguyên dương.");
+                errorProvider1.SetError(txtinta, "Vui lòng nhập số nguyên dương (A > 0).");
+                return;
             }
             else
             {
                 errorProvider1.SetError(txtinta, "");
             }
-            if (string.IsNullOrEmpty(txtintb.Text))
+            if (!int.TryParse(txtintb.Text, out b))
             {
-                errorProvider1.SetError(txtintb, "Số B không thể rỗng");
+                errorProvider1.SetError(txtintb, "Vui lòng nhập số nguyên hợp lệ.");
+                return;
             }
+            else
+            {
+                errorProvider1.SetError(txtintb, "");
+            }
+            int x = b / a;
+            txtnghiem.Text = x.ToString();
 
-            int x;
-            x = int.Parse(txtintb.Text) / int.Parse(txtinta.Text);
-            txtnghiem.Text = x.ToString();    
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void btnthoat_Click(object sender, EventArgs e)
         {
-
+            this.Close();
         }
 
         private void btnxoa_Click(object sender, EventArgs e)

@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace baiTH16
+namespace BTH1
 {
     public partial class Bai6 : Form
     {
@@ -17,21 +17,14 @@ namespace baiTH16
             InitializeComponent();
         }
 
-        private void btnthoat_Click(object sender, EventArgs e)
+        private void Bai6_Load(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Bạn muốn thoát chương trình ?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result == DialogResult.Yes)
-            {
-                Close();
-            }
+
         }
 
         private void radtimenewroman_CheckedChanged(object sender, EventArgs e)
         {
-            if (radtimenewroman.Checked)
-            {
-                txtinput.Font = new Font(radtimenewroman.Font.Name, radtimenewroman.Font.Size, radtimenewroman.Font.Style^FontStyle.Regular);
-            }
+            txtinput.Font = new Font(radtimenewroman.Font.Name, radtimenewroman.Font.Size, radtimenewroman.Font.Style ^ FontStyle.Regular);
         }
 
         private void radarial_CheckedChanged(object sender, EventArgs e)
@@ -39,9 +32,19 @@ namespace baiTH16
             txtinput.Font = new Font(radarial.Font.Name, radarial.Font.Size, radarial.Font.Style ^ FontStyle.Regular);
         }
 
-        private void radrahoma_CheckedChanged(object sender, EventArgs e)
+        private void radtahoma_CheckedChanged(object sender, EventArgs e)
         {
             txtinput.Font = new Font(radtahoma.Font.Name, radtahoma.Font.Size, radtahoma.Font.Style ^ FontStyle.Regular);
+        }
+
+        private void radcouriernew_CheckedChanged(object sender, EventArgs e)
+        {
+            txtinput.Font = new Font(radcouriernew.Font.Name, radcouriernew.Font.Size, radcouriernew.Font.Style ^ FontStyle.Regular);
+        }
+
+        private void btnthoat_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

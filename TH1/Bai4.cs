@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace baiTH14
+namespace BTH1
 {
     public partial class Bai4 : Form
     {
@@ -17,7 +17,7 @@ namespace baiTH14
             InitializeComponent();
         }
 
-        private void label2_Click(object sender, EventArgs e)
+        private void Bai4_Load(object sender, EventArgs e)
         {
 
         }
@@ -55,11 +55,6 @@ namespace baiTH14
             chia = int.Parse(txtinta.Text) / int.Parse(txtintb.Text);
 
             txtketqua.Text = chia.ToString();
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace baiTH110
+namespace BTH1
 {
     public partial class Bai10 : Form
     {
@@ -17,31 +17,14 @@ namespace baiTH110
             InitializeComponent();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void Bai10_Load(object sender, EventArgs e)
         {
-            for (int i = 0;i < lstlopa.Items.Count;i++)
-            {
-                lstlopb.Items.Add(lstlopa.SelectedItems[i]);
-                lstlopa.Items.RemoveAt(i);
-            }
+
         }
 
-        private void btnxoa_Click(object sender, EventArgs e)
+        private void btnketthuc_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn xóa không?", "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result == DialogResult.Yes)
-            {
-                
-                while (lstlopa.SelectedItems.Count > 0)
-                {
-                    lstlopa.Items.Remove(lstlopa.SelectedItems[0]);
-                }
-            }
-        }
-
-        private void lstlopa_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
+            this.Close();
         }
 
         private void btnupdate_Click(object sender, EventArgs e)
@@ -57,22 +40,17 @@ namespace baiTH110
 
         private void btnsanga_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < lstlopb.Items.Count; i++)
+            if (lstlopb.SelectedItem != null)
             {
-                lstlopa.Items.Add(lstlopb.SelectedItems[i]);
-                lstlopb.Items.RemoveAt(i);
+                object selectedItem = lstlopb.SelectedItem;
+
+                lstlopa.Items.Add(selectedItem);
+
+                lstlopb.Items.Remove(selectedItem);
             }
-        }
-
-        private void btnsangb1_Click(object sender, EventArgs e)
-        {
-            int i = 0;
-            while (i < lstlopa.SelectedItems.Count)
+            else
             {
-                string value = lstlopa.SelectedItems[i].ToString();
-                lstlopb.Items.Add(value);
-                lstlopa.Items.Remove(value);
-
+                MessageBox.Show("Vui lòng chọn một mục từ Lớp b để chuyển.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -88,18 +66,58 @@ namespace baiTH110
             }
         }
 
-        private void btnketthuc_Click(object sender, EventArgs e)
+        private void btnsangb_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn kết thúc không?", "Xác nhận kết thúc", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result == DialogResult.Yes)
+            if (lstlopa.SelectedItem != null)
             {
-                Application.Exit();
+                object selectedItem = lstlopa.SelectedItem;
+
+                lstlopb.Items.Add(selectedItem);
+
+                lstlopa.Items.Remove(selectedItem);
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn một mục từ Lớp A để chuyển.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void btnsangb1_Click(object sender, EventArgs e)
         {
+            int i = 0;
+            while (i < lstlopa.SelectedItems.Count)
+            {
+                string value = lstlopa.SelectedItems[i].ToString();
+                lstlopb.Items.Add(value);
+                lstlopa.Items.Remove(value);
 
+            }
+        }
+
+        private void btnxoa_Click(object sender, EventArgs e)
+        {
+            if (lstlopa.SelectedItem != null)
+            {
+                DialogResult dialogResult = MessageBox.Show($"Bạn có chắc chắn muốn xóa '{lstlopa.SelectedItem}' khỏi Lớp A?", "Xác nhận Xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (dialogResult == DialogResult.Yes)
+                {
+                    lstlopa.Items.Remove(lstlopa.SelectedItem);
+                }
+            }
+            else if (lstlopb.SelectedItem != null)
+            {
+                DialogResult dialogResult = MessageBox.Show($"Bạn có chắc chắn muốn xóa '{lstlopb.SelectedItem}' khỏi Lớp B?", "Xác nhận Xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (dialogResult == DialogResult.Yes)
+                {
+                    lstlopb.Items.Remove(lstlopb.SelectedItem);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn một mục từ Lớp A hoặc Lớp B để xóa.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
     }
 }

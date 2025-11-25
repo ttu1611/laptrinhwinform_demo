@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace baiTH1bai11
+namespace BTH1
 {
     public partial class Bai11 : Form
     {
@@ -17,23 +17,29 @@ namespace baiTH1bai11
             InitializeComponent();
         }
 
-        private void lblmssv_Click(object sender, EventArgs e)
+        private void Bai11_Load(object sender, EventArgs e)
         {
+            rad1.Checked = true;
+            chklstbox.Items.Add("Thiết kế web");
+            chklstbox.Items.Add("Cơ sở dữ liệu");
+            chklstbox.Items.Add("Mạng máy tính");
+            chklstbox.Items.Add("Triết học Mác-Lênin");
+            chklstbox.Items.Add("Giải tích");
 
-        }
+            cmblop.Items.Add("12424TN");
+            cmblop.Items.Add("124241");
+            cmblop.Items.Add("Vuýp");
 
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
 
+            cmbnienkhoa.Items.Add("2020");
+            cmbnienkhoa.Items.Add("2021");
+            cmbnienkhoa.Items.Add("2022");
+            cmbnienkhoa.Items.Add("2023");
         }
 
         private void btnthoat_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn thoát không?", "Xác nhận thoát", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result == DialogResult.Yes)
-            {
-                Application.Exit();
-            }
+            this.Close();
         }
 
         private void btnhuy_Click(object sender, EventArgs e)
@@ -49,47 +55,24 @@ namespace baiTH1bai11
             chklstbox.ClearSelected();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            rad1.Checked = true;
-            chklstbox.Items.Add("LT Windows");
-            chklstbox.Items.Add("Cơ sở dữ liệu");
-            chklstbox.Items.Add("Mạng máy tính");
-            chklstbox.Items.Add("Lập trình web");
-            chklstbox.Items.Add("Lập trình thiết bị di động");
-
-            cmblop.Items.Add("TH01");
-            cmblop.Items.Add("TH02");
-            cmblop.Items.Add("TH03");
-            
-
-            cmbnienkhoa.Items.Add("2007");
-            cmbnienkhoa.Items.Add("2008");
-            cmbnienkhoa.Items.Add("2009");
-            cmbnienkhoa.Items.Add("2010");
-
-            
-
-        }
-
         private void btndangki_Click(object sender, EventArgs e)
         {
-            string hockinhe = "";
+            string hocki = "";
             if (rad1.Checked)
             {
-                hockinhe = "1";
+                hocki = "1";
             }
             else if (rad2.Checked)
             {
-                hockinhe = "2";
+                hocki = "2";
             }
             else if (rad3.Checked)
             {
-                hockinhe = "3";
+                hocki = "3";
             }
             else if (rad4.Checked)
             {
-                hockinhe = "4";
+                hocki = "4";
             }
 
             string monhoc = "";
@@ -101,7 +84,7 @@ namespace baiTH1bai11
                 }
             }
 
-            MessageBox.Show(text: "Mã Sinh Viên" + txtmssv.Text + "Sinh viên :" + txthovaten.Text + "\n" + "Lớp :" + cmblop.Text + "\n" + "Niên khóa :" + cmbnienkhoa.Text + "\n" + "Học kì :" + hockinhe + "\n" + monhoc);
+            MessageBox.Show(text: "Mã Sinh Viên" + txtmssv.Text + "Sinh viên :" + txthovaten.Text + "\n" + "Lớp :" + cmblop.Text + "\n" + "Niên khóa :" + cmbnienkhoa.Text + "\n" + "Học kì :" + hocki + "\n" + monhoc);
         }
     }
 }

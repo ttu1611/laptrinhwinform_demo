@@ -7,9 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolTip;
 
-namespace baiTH13
+namespace BTH1
 {
     public partial class Bai3 : Form
     {
@@ -18,9 +17,24 @@ namespace baiTH13
             InitializeComponent();
         }
 
-        private void btnthoat_Click(object sender, EventArgs e)
+        private void Bai3_Load(object sender, EventArgs e)
         {
-            Close();
+
+        }
+
+        private void lstuocso_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnsum_Click(object sender, EventArgs e)
+        {
+            int tong = 0;
+            foreach (int i in lstuocso.Items)
+            {
+                tong += i;
+            }
+            MessageBox.Show("Tổng các ước là :" + tong, "Kết quả", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
         }
 
         private void btncapnhat_Click(object sender, EventArgs e)
@@ -41,22 +55,6 @@ namespace baiTH13
                 if (n % i == 0)
                     lstuocso.Items.Add(i);
             }
-
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            txtnhapso.Focus();
-        }
-
-        private void btnsum_Click(object sender, EventArgs e)
-        {
-            int tong = 0;
-            foreach (int i in lstuocso.Items)
-            {
-                tong += i;
-            }
-            MessageBox.Show("Tổng các ước là :" + tong, "Kết quả", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
         }
 
         private void btnsoluongcacuocchan_Click(object sender, EventArgs e)
@@ -71,6 +69,7 @@ namespace baiTH13
             }
             MessageBox.Show("Sô lượng ước chẵn :" + dem, "Kết quả", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
         }
+
         private bool IsPrime(int n)
         {
             if (n < 2) return false;
@@ -79,6 +78,7 @@ namespace baiTH13
                     return false;
             return true;
         }
+
         private void btnsoluonguocnguyento_Click(object sender, EventArgs e)
         {
             int dem = 0;

@@ -21,14 +21,6 @@ namespace BTH1
         {
 
         }
-        private void btnKQ_Click(object sender, EventArgs e)
-        {
-            string hoten = this.txtHoTen.Text.Trim();
-            if (this.rad1.Checked == true)
-                txtKQ.Text = hoten.ToLower();
-            if (this.rad2.Checked == true)
-                txtKQ.Text = hoten.ToUpper();
-        }
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
@@ -36,7 +28,15 @@ namespace BTH1
             this.txtKQ.Clear();
             this.rad1.Checked = true;
             this.txtHoTen.Focus();
+        }
 
+        private void btnKQ_Click(object sender, EventArgs e)
+        {
+            string hoten = this.txtHoTen.Text.Trim();
+            if (this.rad1.Checked == true)
+                txtKQ.Text = hoten.ToLower();
+            if (this.rad2.Checked == true)
+                txtKQ.Text = hoten.ToUpper();
         }
     }
 }

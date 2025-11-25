@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace baiTH19
+namespace BTH1
 {
     public partial class Bai9 : Form
     {
@@ -17,41 +17,19 @@ namespace baiTH19
             InitializeComponent();
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void btnnhap_Click(object sender, EventArgs e)
         {
-            int n = lstchienpa.Items.Count;
-            lstchienpa.Items[0] = "";
-            lstchienpa.Items[n - 1] = ""; 
-        }
-
-        private void button9_Click(object sender, EventArgs e)
-        {
-            for (int i = lstchienpa.Items.Count - 1; i >= 0; i--)
-            {
-                int value = Convert.ToInt32(lstchienpa.Items[i]);
-                if (value % 2 == 0)
-                {
-                    lstchienpa.Items.RemoveAt(i);
-                }
-            }
-        }
-
-        private void btnketthuc_Click(object sender, EventArgs e)
-        {
-            DialogResult result = MessageBox.Show("Thoát nhé !!!", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result == DialogResult.Yes)
-            {
-                Close();
-            }
+            lstpt.Items.Add(txtinput.Text);
+            txtinput.Text = "";
         }
 
         private void btntong_Click(object sender, EventArgs e)
         {
             int tong = 0;
-            for (int i = 0; i < lstchienpa.Items.Count; i++)
+            for (int i = 0; i < lstpt.Items.Count; i++)
             {
-                
-                if (int.TryParse(lstchienpa.Items[i].ToString(), out int value))
+
+                if (int.TryParse(lstpt.Items[i].ToString(), out int value))
                 {
                     tong += value;
                 }
@@ -59,49 +37,68 @@ namespace baiTH19
             MessageBox.Show("Tổng là : " + tong);
         }
 
-        private void btnnhap_Click(object sender, EventArgs e)
+        private void btnxoadaucuoi_Click(object sender, EventArgs e)
         {
-            lstchienpa.Items.Add(txtinput.Text);
-            txtinput.Text = "";
+            int n = lstpt.Items.Count;
+            lstpt.Items[0] = "";
+            lstpt.Items[n - 1] = "";
         }
 
         private void btnxoadangchon_Click(object sender, EventArgs e)
-        {            
-            for (int i = 0; i < lstchienpa.SelectedIndex; i++)
+        {
+            for (int i = 0; i < lstpt.SelectedIndex; i++)
             {
-                lstchienpa.Items.RemoveAt(lstchienpa.SelectedIndices[i]);
+                lstpt.Items.RemoveAt(lstpt.SelectedIndices[i]);
             }
         }
 
         private void btntang2_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < lstchienpa.Items.Count;i++)
+            for (int i = 0; i < lstpt.Items.Count; i++)
             {
-                int value = Convert.ToInt32(lstchienpa.Items[i]) + 2;
-                lstchienpa.Items[i] = value;
+                int value = Convert.ToInt32(lstpt.Items[i]) + 2;
+                lstpt.Items[i] = value;
             }
         }
 
         private void btnbinhphuong_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < lstchienpa.Items.Count; i++)
+            for (int i = 0; i < lstpt.Items.Count; i++)
             {
-                int value = Convert.ToInt32(lstchienpa.Items[i]) * Convert.ToInt32(lstchienpa.Items[i]);
-                lstchienpa.Items[i] = value;
+                int value = Convert.ToInt32(lstpt.Items[i]) * Convert.ToInt32(lstpt.Items[i]);
+                lstpt.Items[i] = value;
             }
         }
 
         private void btnchan_Click(object sender, EventArgs e)
         {
-            for (int i = lstchienpa.Items.Count - 1; i >= 0; i--)
+            lstpt.ClearSelected();
+            for (int i = 0; i < lstpt.Items.Count; i++)
             {
-                int value = Convert.ToInt32(lstchienpa.Items[i]);
-                if (value % 2 != 0)
+                int value = Convert.ToInt32(lstpt.Items[i]);
+                if (value % 2 == 0)
                 {
-                    lstchienpa.Items.RemoveAt(i);
+                    lstpt.SetSelected(i, true);
                 }
             }
+        }
 
+        private void btnchonsole_Click(object sender, EventArgs e)
+        {
+            lstpt.ClearSelected();
+            for (int i = 0; i < lstpt.Items.Count; i++)
+            {
+                int value = Convert.ToInt32(lstpt.Items[i]);
+                if (value % 2 != 0)
+                {
+                    lstpt.SetSelected(i, true);
+                }
+            }
+        }
+
+        private void btnketthuc_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
